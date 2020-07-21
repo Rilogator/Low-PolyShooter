@@ -1,46 +1,41 @@
 class_name ResourceTracker, "res://dredd_icon.png"
 extends Resource
 
-const HEALTH_MAX: int = 100
-const ARMOR_MAX: int = 100
+# Health
 
-const FMJ_MAX: int = 99
-const AP_MAX: int = 99
-const INC_MAX: int = 99
-const HE_MAX: int = 99
+const HEALTH_MAX = 100
+const ARMOR_MAX = 100
 
-export(int) var _health_current = 100
-export(int) var armor_current = 100 setget set_armor
+var health_count = HEALTH_MAX
+var armor_count = 0
 
-export(int) var fmj = 1 setget set_fmj
-export(int) var ap = 1 setget set_ap
-export(int) var inc = 1 setget set_inc
-export(int) var he = 1 setget set_he
+# Ammo 
 
-export(int) var _stun = -1
+enum AmmoType {FMJ, AP, INC, HE, STUN}
 
-func damage(value: int) ->void:
-	if armor_current > 0:
+const AMMO_MAX := {
+	AmmoType.FMJ: 99,
+	AmmoType.AP: 20,
+	AmmoType.INC: 10,
+	AmmoType.HE: 5,
+	AmmoType.STUN: -1,
+}
+
+var ammo_count := {
+	AmmoType.FMJ: 1,
+	AmmoType.AP: 1,
+	AmmoType.INC: 1,
+	AmmoType.HE: 1,
+	AmmoType.STUN: -1,
+}
+
+# Functions
+
+func damage(value):
+	if armor_count > 0:
 		value = value/2
-		armor_current -= value
-	_health_current -= max(value, 0)
+		armor_count = max(armor_count - value, 0)
+	health_count -= value
 
-
-func set_armor(value: int) -> void:
-	armor_current = clamp(value, 0, ARMOR_MAX)
-
-
-func set_fmj(value: int) -> void:
-	fmj = clamp(value, 0, FMJ_MAX)
-
-
-func set_ap(value: int) -> void:
-	ap = clamp(value, 0, AP_MAX)
-
-
-func set_inc(value: int) -> void:
-	inc = clamp(value, 0, INC_MAX)
-
-
-func set_he(value: int) -> void:
-	he = clamp(value, 0, HE_MAX)
+func add_ammo(type, value: int):
+	ammo_count[type] = min(ammo_count[type] + value, AMMO_MAX[type])
