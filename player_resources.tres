@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://scripts/resource_tracker.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+_health_current = 100
+armor_current = 100
+fmj = 1
+ap = 1
+inc = 1
+he = 1
+_stun = -1
