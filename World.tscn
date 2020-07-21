@@ -1,0 +1,152 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://environment/raw assets/resources/grass_lowres.png" type="Texture" id=1]
+[ext_resource path="res://environment/assets/brickwall.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/assets/shed.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/MachineGunPickup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/RocketLauncherPickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://pickups/RocketLauncherAmmoPickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://pickups/ShotgunAmmoPickup.tscn" type="PackedScene" id=8]
+[ext_resource path="res://pickups/MachineGunAmmoPickup.tscn" type="PackedScene" id=9]
+[ext_resource path="res://pickups/HealthPickup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://pickups/ShotgunPickup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://characters/enemies/raven/BirdMonster.tscn" type="PackedScene" id=12]
+[ext_resource path="res://characters/enemies/reptile/ReptileMonster.tscn" type="PackedScene" id=13]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_texture = ExtResource( 1 )
+uv1_scale = Vector3( 50, 50, 1 )
+
+[sub_resource type="CubeMesh" id=2]
+material = SubResource( 1 )
+size = Vector3( 100, 2, 100 )
+
+[sub_resource type="ConcavePolygonShape" id=3]
+data = PoolVector3Array( -50, 1, 50, 50, 1, 50, -50, -1, 50, 50, 1, 50, 50, -1, 50, -50, -1, 50, 50, 1, -50, -50, 1, -50, 50, -1, -50, -50, 1, -50, -50, -1, -50, 50, -1, -50, 50, 1, 50, 50, 1, -50, 50, -1, 50, 50, 1, -50, 50, -1, -50, 50, -1, 50, -50, 1, -50, -50, 1, 50, -50, -1, -50, -50, 1, 50, -50, -1, 50, -50, -1, -50, 50, 1, 50, -50, 1, 50, 50, 1, -50, -50, 1, 50, -50, 1, -50, 50, 1, -50, -50, -1, 50, 50, -1, 50, -50, -1, -50, 50, -1, 50, 50, -1, -50, -50, -1, -50 )
+
+[sub_resource type="NavigationMesh" id=4]
+vertices = PoolVector3Array( 6.4, 1.4, -2, 6.7, 1.4, -0.799999, 7.9, 1.4, -0.799999, 7.9, 1.4, -6.8, -49.4, 1.4, -14.9, -49.4, 1.4, -8, -7.4, 1.4, 4.9, 1.9, 1.4, -3.5, -13.1, 1.4, -49.4, -20.3, 1.4, -49.4, 4, 1.4, -3.2, 6.4, 1.4, -2, 7.9, 1.4, -6.8, 4.6, 1.4, 4.9, 4.6, 1.4, 1.9, 0.700001, 1.4, 0.100002, -7.4, 1.4, 4.9, 1.9, 1.4, -3.5, 4, 1.4, -3.2, 7.9, 1.4, -6.8, -5.9, 1.4, -49.4, -13.1, 1.4, -49.4, 7.9, 1.4, -6.8, 8.8, 1.4, -7.1, 8.8, 1.4, -49.4, 1.3, 1.4, -49.4, -42.2, 1.4, -49.4, -49.4, 1.4, -49.4, -49.4, 1.4, -42.5, -7.4, 1.4, 4.9, 0.700001, 1.4, 0.100002, 1.3, 1.4, -2.9, -7.4, 1.4, 4.9, 1.3, 1.4, -2.9, 1.9, 1.4, -3.5, -42.2, 1.4, -49.4, -49.4, 1.4, -42.5, -49.4, 1.4, -35.6, -35, 1.4, -49.4, -42.2, 1.4, -49.4, -49.4, 1.4, -35.6, -49.4, 1.4, -28.7, -49.4, 1.4, -8, -49.4, 1.4, -1.1, -7.4, 1.4, 4.9, -27.8, 1.4, -49.4, -35, 1.4, -49.4, -49.4, 1.4, -28.7, -49.4, 1.4, -21.8, 7.9, 1.4, -6.8, 1.3, 1.4, -49.4, -5.9, 1.4, -49.4, -20.3, 1.4, -49.4, -27.8, 1.4, -49.4, -49.4, 1.4, -21.8, -49.4, 1.4, -14.9, -49.4, 1.4, 5.8, -7.7, 1.4, 5.8, -7.4, 1.4, 4.9, -49.4, 1.4, -1.1, 49.3, 1.4, -38.6, 49.3, 1.4, -49.4, 39.1, 1.4, -49.4, 49.3, 1.4, -38.6, 39.1, 1.4, -49.4, 28.9, 1.4, -49.4, 49.3, 1.4, -27.5, 49.3, 1.4, -38.6, 28.9, 1.4, -49.4, 18.7, 1.4, -49.4, 8.8, 1.4, -7.1, 10, 1.4, -6.8, 49.3, 1.4, -16.4, 49.3, 1.4, -27.5, 18.7, 1.4, -49.4, 8.8, 1.4, -49.4, 10, 1.4, -6.8, 10, 1.4, -5, 49.3, 1.4, -5.3, 49.3, 1.4, -16.4, 10, 1.4, -5, 10, 1.4, 4.9, 49.3, 1.4, 5.2, 49.3, 1.4, -5.3, 4.3, 5.2, 0.700001, 4.9, 5.2, 0.700001, 5.5, 5.4, -0.799999, 2.5, 5.4, -2, 1.9, 5.4, -0.799999, 7.9, 1.4, -0.799999, 6.7, 1.4, -0.799999, 6.1, 1.4, 1.3, 6.1, 1.4, 1.3, 4.6, 1.4, 1.9, 4.6, 1.4, 4.9, 7.9, 1.4, 4.9, 7.9, 1.4, -0.799999, 6.1, 1.4, 1.3, 4.6, 1.4, 4.9, 38.8, 1.4, 49.3, 49.3, 1.4, 49.3, 49.3, 1.4, 38.2, 28.6, 1.4, 49.3, 38.8, 1.4, 49.3, 49.3, 1.4, 38.2, 28.6, 1.4, 49.3, 49.3, 1.4, 38.2, 49.3, 1.4, 27.1, 18.4, 1.4, 49.3, 9.7, 1.4, 7, 7.9, 1.4, 7, 8.2, 1.4, 49.3, 18.4, 1.4, 49.3, 49.3, 1.4, 27.1, 49.3, 1.4, 16, 49.3, 1.4, 5.2, 10, 1.4, 4.9, 9.7, 1.4, 7, 49.3, 1.4, 16, -49.4, 1.4, 38.2, -49.4, 1.4, 49.3, -38.6, 1.4, 49.3, -49.4, 1.4, 38.2, -38.6, 1.4, 49.3, -27.8, 1.4, 49.3, -49.4, 1.4, 27.4, -49.4, 1.4, 38.2, -27.8, 1.4, 49.3, -17, 1.4, 49.3, -5.9, 1.4, 49.3, -5.6, 1.4, 7, -7.4, 1.4, 7, -49.4, 1.4, 16.6, -49.4, 1.4, 27.4, -17, 1.4, 49.3, -7.4, 1.4, 7, -7.7, 1.4, 5.8, -49.4, 1.4, 5.8, -49.4, 1.4, 16.6, -5.6, 1.4, 7, -5.9, 1.4, 49.3, 1, 1.4, 49.3, 1, 1.4, 7, 1, 1.4, 49.3, 8.2, 1.4, 49.3, 7.9, 1.4, 7, 1, 1.4, 7 )
+polygons = [ PoolIntArray( 3, 2, 0 ), PoolIntArray( 0, 2, 1 ), PoolIntArray( 9, 8, 4 ), PoolIntArray( 4, 8, 5 ), PoolIntArray( 5, 8, 6 ), PoolIntArray( 6, 8, 7 ), PoolIntArray( 12, 11, 10 ), PoolIntArray( 16, 15, 13 ), PoolIntArray( 13, 15, 14 ), PoolIntArray( 21, 20, 17 ), PoolIntArray( 17, 20, 18 ), PoolIntArray( 18, 20, 19 ), PoolIntArray( 25, 24, 22 ), PoolIntArray( 22, 24, 23 ), PoolIntArray( 28, 27, 26 ), PoolIntArray( 31, 30, 29 ), PoolIntArray( 34, 33, 32 ), PoolIntArray( 37, 36, 35 ), PoolIntArray( 41, 40, 38 ), PoolIntArray( 38, 40, 39 ), PoolIntArray( 44, 43, 42 ), PoolIntArray( 48, 47, 45 ), PoolIntArray( 45, 47, 46 ), PoolIntArray( 51, 50, 49 ), PoolIntArray( 55, 54, 52 ), PoolIntArray( 52, 54, 53 ), PoolIntArray( 59, 58, 56 ), PoolIntArray( 56, 58, 57 ), PoolIntArray( 62, 61, 60 ), PoolIntArray( 65, 64, 63 ), PoolIntArray( 69, 68, 66 ), PoolIntArray( 66, 68, 67 ), PoolIntArray( 75, 74, 70 ), PoolIntArray( 70, 74, 71 ), PoolIntArray( 71, 74, 73 ), PoolIntArray( 71, 73, 72 ), PoolIntArray( 79, 78, 76 ), PoolIntArray( 76, 78, 77 ), PoolIntArray( 83, 82, 80 ), PoolIntArray( 80, 82, 81 ), PoolIntArray( 88, 87, 84 ), PoolIntArray( 84, 87, 85 ), PoolIntArray( 85, 87, 86 ), PoolIntArray( 91, 90, 89 ), PoolIntArray( 94, 93, 92 ), PoolIntArray( 98, 97, 95 ), PoolIntArray( 95, 97, 96 ), PoolIntArray( 101, 100, 99 ), PoolIntArray( 104, 103, 102 ), PoolIntArray( 108, 107, 105 ), PoolIntArray( 105, 107, 106 ), PoolIntArray( 114, 113, 109 ), PoolIntArray( 109, 113, 110 ), PoolIntArray( 110, 113, 112 ), PoolIntArray( 110, 112, 111 ), PoolIntArray( 118, 117, 115 ), PoolIntArray( 115, 117, 116 ), PoolIntArray( 121, 120, 119 ), PoolIntArray( 124, 123, 122 ), PoolIntArray( 128, 127, 125 ), PoolIntArray( 125, 127, 126 ), PoolIntArray( 134, 133, 129 ), PoolIntArray( 129, 133, 132 ), PoolIntArray( 129, 132, 131 ), PoolIntArray( 129, 131, 130 ), PoolIntArray( 138, 137, 135 ), PoolIntArray( 135, 137, 136 ), PoolIntArray( 142, 141, 139 ), PoolIntArray( 139, 141, 140 ), PoolIntArray( 146, 145, 143 ), PoolIntArray( 143, 145, 144 ) ]
+
+[sub_resource type="ProceduralSky" id=5]
+sky_top_color = Color( 0.156863, 0.184314, 0.211765, 1 )
+sky_horizon_color = Color( 0.423529, 0.396078, 0.372549, 1 )
+sun_color = Color( 0.847059, 0.552941, 0.137255, 1 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 5 )
+
+[node name="World" type="Spatial"]
+
+[node name="Environment" type="Spatial" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Ground" type="MeshInstance" parent="Environment"]
+mesh = SubResource( 2 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="Environment/Ground"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Environment/Ground/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="brickwall" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87977, 0.977247, 6.04006 )
+
+[node name="brickwall2" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.879767, 0.977247, 6.04006 )
+
+[node name="brickwall4" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12023, 0.977247, 6.04006 )
+
+[node name="brickwall5" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.84984, 0.977248, 3.70502 )
+
+[node name="brickwall6" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.84984, 0.977248, -0.294976 )
+
+[node name="brickwall7" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.84984, 0.977248, -4.29498 )
+
+[node name="brickwall3" parent="Environment" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.12023, 0.977247, 6.04006 )
+
+[node name="shed" parent="Environment" instance=ExtResource( 3 )]
+transform = Transform( 0.929635, 0, -0.368482, 0, 1, 0, 0.368482, 0, 0.929635, 3.57246, 0.954795, -0.620883 )
+
+[node name="Navigation" type="Navigation" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
+navmesh = SubResource( 4 )
+
+[node name="BirdMonster" parent="Navigation" instance=ExtResource( 12 )]
+transform = Transform( 0.283697, 0, -0.958914, 0, 1, 0, 0.958914, 0, 0.283697, 7.29147, 1, -16.3797 )
+
+[node name="BirdMonster2" parent="Navigation" instance=ExtResource( 12 )]
+transform = Transform( 0.283697, 0, -0.958914, 0, 1, 0, 0.958914, 0, 0.283697, 6.0157, 1, 4.28458 )
+
+[node name="BirdMonster3" parent="Navigation" instance=ExtResource( 12 )]
+transform = Transform( 0.283697, 0, -0.958914, 0, 1, 0, 0.958914, 0, 0.283697, 9.97243, 1, -8.33649 )
+
+[node name="BirdMonster4" parent="Navigation" instance=ExtResource( 12 )]
+transform = Transform( 0.283697, 0, -0.958914, 0, 1, 0, 0.958914, 0, 0.283697, 26.5158, 1, 20.7102 )
+
+[node name="BirdMonster5" parent="Navigation" instance=ExtResource( 12 )]
+transform = Transform( -0.467606, 0, -0.883937, 0, 1, 0, 0.883937, 0, -0.467606, 2.7238, 1, 22.5305 )
+
+[node name="BirdMonster6" parent="Navigation" instance=ExtResource( 12 )]
+transform = Transform( -0.284233, 0, -0.958755, 0, 1, 0, 0.958755, 0, -0.284233, 9.92485, 1, 24.2876 )
+
+[node name="BirdMonster7" parent="Navigation" instance=ExtResource( 12 )]
+transform = Transform( 0.283697, 0, -0.958914, 0, 1, 0, 0.958914, 0, 0.283697, 14.813, 1, -15.0994 )
+
+[node name="ReptileMonster" parent="Navigation" instance=ExtResource( 13 )]
+transform = Transform( -0.22342, 0, -0.974722, 0, 1, 0, 0.974722, 0, -0.22342, -0.55245, 1, 2.768 )
+
+[node name="ReptileMonster3" parent="Navigation" instance=ExtResource( 13 )]
+transform = Transform( 0.542705, 0, -0.839923, 0, 1, 0, 0.839923, 0, 0.542705, 3.13745, 1, -37.5966 )
+
+[node name="ReptileMonster4" parent="Navigation" instance=ExtResource( 13 )]
+transform = Transform( 0.859281, 0, -0.511503, 0, 1, 0, 0.511503, 0, 0.859281, -8.8884, 1, -39.3158 )
+
+[node name="ReptileMonster2" parent="Navigation" instance=ExtResource( 13 )]
+transform = Transform( -0.628479, 0, -0.777826, 0, 1, 0, 0.777826, 0, -0.628479, -0.315657, 1, 20.2313 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( -0.98069, 0, -0.195569, -0.0727391, 0.928259, 0.364753, 0.181539, 0.371935, -0.910334, 0, 16.0307, -25.5934 )
+light_color = Color( 0.847059, 0.552941, 0.137255, 1 )
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.486595, 0, -0.873628, 0, 1, 0, 0.873628, 0, 0.486595, -7.61886, 1, 1.08718 )
+
+[node name="HealthPickup" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -9.41538 )
+
+[node name="MachineGunAmmoPickup" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -9.41538 )
+
+[node name="MachineGunPickup" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, -9.41538 )
+
+[node name="RocketLauncherAmmoPickup" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -9.41538 )
+
+[node name="RocketLauncherPickup" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2, -9.41538 )
+
+[node name="ShotgunAmmoPickup" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -11.4154 )
+
+[node name="ShotgunPickup" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -13.4154 )
